@@ -105,7 +105,7 @@ nvm_ls_remote() {
     else
         PATTERN=".*"
     fi
-    VERSIONS=`curl -s http://nodejs.org/dist/ \
+    VERSIONS=`curl -s https://nodejs.org/dist/ \
                   | \egrep -o 'v[0-9]+\.[0-9]+\.[0-9]+' \
                   | \grep -w "${PATTERN}" \
                   | sort -t. -u -k 1.2,1n -k 2,2n -k 3,3n`
@@ -258,8 +258,8 @@ nvm() {
           esac
           if [ $binavail -eq 1 ]; then
             t="$VERSION-$os-$arch"
-            url="http://nodejs.org/dist/$VERSION/node-${t}.tar.gz"
-            sum=`curl -s http://nodejs.org/dist/$VERSION/SHASUMS.txt | \grep node-${t}.tar.gz | awk '{print $1}'`
+            url="https://nodejs.org/dist/$VERSION/node-${t}.tar.gz"
+            sum=`curl -s https://nodejs.org/dist/$VERSION/SHASUMS.txt | \grep node-${t}.tar.gz | awk '{print $1}'`
             local tmpdir="$NVM_DIR/bin/node-${t}"
             local tmptarball="$tmpdir/node-${t}.tar.gz"
             if (
@@ -291,11 +291,11 @@ nvm() {
       fi
       local tmpdir="$NVM_DIR/src"
       local tmptarball="$tmpdir/node-$VERSION.tar.gz"
-      if [ "`curl -Is "http://nodejs.org/dist/$VERSION/node-$VERSION.tar.gz" | \grep '200 OK'`" != '' ]; then
-        tarball="http://nodejs.org/dist/$VERSION/node-$VERSION.tar.gz"
-        sum=`curl -s http://nodejs.org/dist/$VERSION/SHASUMS.txt | \grep node-$VERSION.tar.gz | awk '{print $1}'`
-      elif [ "`curl -Is "http://nodejs.org/dist/node-$VERSION.tar.gz" | \grep '200 OK'`" != '' ]; then
-        tarball="http://nodejs.org/dist/node-$VERSION.tar.gz"
+      if [ "`curl -Is "https://nodejs.org/dist/$VERSION/node-$VERSION.tar.gz" | \grep '200 OK'`" != '' ]; then
+        tarball="https://nodejs.org/dist/$VERSION/node-$VERSION.tar.gz"
+        sum=`curl -s https://nodejs.org/dist/$VERSION/SHASUMS.txt | \grep node-$VERSION.tar.gz | awk '{print $1}'`
+      elif [ "`curl -Is "https://nodejs.org/dist/node-$VERSION.tar.gz" | \grep '200 OK'`" != '' ]; then
+        tarball="https://nodejs.org/dist/node-$VERSION.tar.gz"
       fi
       if (
         [ ! -z $tarball ] && \
