@@ -1,4 +1,4 @@
-# nvm-global #
+# nvm-global
 
 **nvm-global** allows you to use nvm in production-like scenarios by
 installing it globally. nvm-global has been tested working on both Travis-CI and
